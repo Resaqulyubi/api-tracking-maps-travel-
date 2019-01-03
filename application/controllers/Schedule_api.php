@@ -11,9 +11,10 @@ class Schedule_api extends REST_Controller {
   // show data
   function index_get() {
     $id = $this->get('id');
-    $iduser = $this->get('iduser');
-    if( $iduser != ''){
-      $this->db->where('iduser', $iduser);
+  
+     $id_driver = $this->get('id_driver');
+    if( $id_driver != ''){
+      $this->db->where('id_driver', $id_driver);
       $data=$this->db->get("tbl_schedule")->result();
    
     }   elseif ( $id == ''){
