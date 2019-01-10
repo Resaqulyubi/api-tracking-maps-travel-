@@ -14,6 +14,7 @@ class Schedule_route_api extends REST_Controller {
     $id_schedule = $this->get('id_schedule');
     if( $id_schedule != ''){
       $this->db->where('id_schedule', $id_schedule);
+      $this->db->order_by("createdate", "DESC");
       $data=$this->db->get("tbl_schedule_route")->result();
    
     }   elseif ( $id == ''){
@@ -35,11 +36,11 @@ class Schedule_route_api extends REST_Controller {
       if($this->input->post('action')=="POST"){
         $data = array(
           'id' => '',
-          'nama' => $this->input->post('nama'),
-          'lnglat' => $this->input->post('lnglat'),
-          'deskripsi' => $this->input->post('deskripsi'),
-          'foto' => $this->input->post('foto'),
-          'kategori' => $this->input->post('kategori')
+          'id_schedule' => $this->input->post('id_schedule'),
+          'lat' => $this->input->post('lat'),
+          'longi' => $this->input->post('longi'),
+          'createdate' => $this->input->post('createdate'),
+          'createby' => $this->input->post('createby')
         );
         $insert = $this->db->insert('tbl_schedule_route', $data);
         if ($insert) {
