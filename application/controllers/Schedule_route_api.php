@@ -14,7 +14,7 @@ class Schedule_route_api extends REST_Controller {
     $id_schedule = $this->get('id_schedule');
     if( $id_schedule != ''){
       $this->db->where('id_schedule', $id_schedule);
-      $this->db->order_by("createdate", "DESC");
+      $this->db->order_by("createdate", "ASC");
       $data=$this->db->get("tbl_schedule_route")->result();
    
     }   elseif ( $id == ''){
